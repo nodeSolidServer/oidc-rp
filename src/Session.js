@@ -125,6 +125,15 @@ class Session {
   }
 
   /**
+   * webid
+   *
+   * @returns {string|undefined} WebID URI from the ID token claims
+   */
+  get webid () {
+    return this.idClaims && this.idClaims.webid
+  }
+
+  /**
    * hasCredentials
    *
    * @returns {boolean}

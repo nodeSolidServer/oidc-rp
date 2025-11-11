@@ -30,7 +30,7 @@ const FormUrlEncoded = require('./FormUrlEncoded')
  *      authenticate: {
  *        response_type: 'code',
  *        display: 'popup',
- *        scope: 'openid profile email'
+ *        scope: 'openid profile email webid'
  *      },
  *      register: {
  *        client_name: 'Example',
@@ -65,7 +65,7 @@ class RelyingParty {
       authenticate: {
         response_type: 'id_token token',
         display: 'page',
-        scope: ['openid']
+        scope: ['openid', 'webid']
       }
     }
     this.registration = registration

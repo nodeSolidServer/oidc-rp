@@ -22,7 +22,10 @@ const providerUri = 'https://provider.example.com'
 
 const decoded = {
   header: {},
-  payload: { iss: providerUri }
+  payload: { 
+    iss: providerUri,
+    webid: 'https://provider.example.com/profile#me'
+  }
 }
 
 const params = {
@@ -78,6 +81,10 @@ describe('Session', () => {
 
     it('should init credentialType based on rp popToken semantics flag', () => {
       expect(session.credentialType).to.equal('pop_token')
+    })
+
+    it('should provide webid getter', () => {
+      expect(session.webid).to.equal('https://provider.example.com/profile#me')
     })
   })
 })
