@@ -506,7 +506,7 @@ describe('RelyingParty', () => {
     it('should return a JSON serialization', () => {
       const rp = new RelyingParty({})
 
-      expect(rp.serialize()).to.equal('{"provider":{},"defaults":{"popToken":false,"authenticate":{"response_type":"id_token token","display":"page","scope":["openid"]}},"registration":{},"store":{}}')
+      expect(rp.serialize()).to.equal('{"provider":{},"defaults":{"popToken":false,"authenticate":{"response_type":"id_token token","display":"page","scope":["openid","webid"]}},"registration":{},"store":{}}')
     })
   })
 
