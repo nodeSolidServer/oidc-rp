@@ -182,6 +182,13 @@ describe('AuthenticationRequest', () => {
       })
     })
 
+    it('should handle array scope parameters', () => {
+      options = { scope: ['openid', 'webid', 'profile'] }
+      return AuthenticationRequest.create(rp, options, session).then(url => {
+        url.should.include('scope=openid%20webid%20profile')
+      })
+    })
+
     it('should set `client_id` parameter', () => {
       return AuthenticationRequest.create(rp, options, session).then(url => {
         url.should.include('client_id=uuid')
