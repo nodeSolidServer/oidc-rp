@@ -50,6 +50,11 @@ class AuthenticationRequest {
         client = { client_id: registration.client_id}
         params = Object.assign(defaults.authenticate, client, options)
 
+        // normalize scope parameter - convert array to space-separated string if needed
+        if (Array.isArray(params.scope)) {
+          params.scope = params.scope.join(' ')
+        }
+
         // validate presence of required configuration and parameters
         assert(issuer,
           'Missing issuer in provider OpenID Configuration')
