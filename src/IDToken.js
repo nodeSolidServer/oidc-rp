@@ -24,7 +24,7 @@ class TokenClaimsSet {
    * @param [azp] {string} Authorized party
    * @param [webid] {string} WebID URI for Solid OIDC
    */
-  constructor ({ iss, sub, aud, exp, iat, nbf, jti, auth_time, nonce, acr, amr, webid } = {}) {
+  constructor ({ iss, sub, aud, exp, iat, nbf, jti, auth_time, nonce, acr, amr, azp, webid } = {}) {
     this.iss = iss
     this.sub = sub
     this.aud = aud
@@ -36,6 +36,7 @@ class TokenClaimsSet {
     this.nonce = nonce
     this.acr = acr
     this.amr = amr
+    this.azp = azp
     this.webid = webid
   }
 
