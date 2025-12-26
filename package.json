@@ -41,10 +41,10 @@
   },
   "homepage": "https://github.com/solid/oidc-rp",
   "dependencies": {
-    "@solid/jose": "^0.6.9",
+    "@solid/jose": "^0.7.0",
     "assert": "^2.1.0",
     "base64url": "^3.0.1",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^2.7.0",
     "standard-http-error": "^2.0.1",
     "whatwg-url": "^15.1.0"
   },
@@ -58,7 +58,7 @@
     "nock": "^14.0.10",
     "sinon": "^11.1.2",
     "sinon-chai": "^3.7.0",
-    "webpack": "^5.74.0",
+    "webpack": "^5.104.1",
     "webpack-cli": "^4.10.0"
   }
 }
