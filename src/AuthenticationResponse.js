@@ -51,6 +51,7 @@ class AuthenticationResponse {
       .then(this.errorResponse)
       .then(this.matchRequest)
       .then(this.validateStateParam)
+      .then(this.validateIssParam)
       .then(this.validateResponseMode)
       .then(this.validateResponseParams)
       .then(this.exchangeAuthorizationCode)
@@ -179,6 +180,37 @@ class AuthenticationResponse {
 
       return response
     })
+  }
+
+  /**
+   * validateIssParam
+   *
+   * @description
+   * RFC 9207: OAuth 2.0 Authorization Server Issuer Identification
+   * Validates the iss parameter in the authorization response, if present.
+   * The iss parameter helps prevent mix-up attacks by ensuring the response
+   * came from the expected authorization server.
+   *
+   * @param {Object} response
+   * @returns {Promise}
+   */
+  static validateIssParam (response) {
+    let {params, rp} = response
+
+    // RFC 9207: If iss parameter is present, it MUST match the provider issuer
+    if (params.iss) {
+      let expectedIssuer = rp.provider.issuer || rp.provider.url
+      
+      if (params.iss !== expectedIssuer) {
+        throw new Error(
+          `Mismatching issuer in authentication response. Expected: ${expectedIssuer}, Got: ${params.iss}`)
+      }
+    }
+
+    // Note: RFC 9207 specifies iss SHOULD be present, but we don't enforce it
+    // for backward compatibility with authorization servers that don't support RFC 9207
+
+    return Promise.resolve(response)
   }
 
   /**
